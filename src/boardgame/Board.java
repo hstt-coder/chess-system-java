@@ -29,17 +29,30 @@ public class Board {
            throw new BoardExecption("Position not on the board");
         return pieces[row][column];
     }
-    public Piece piece(Position p) {
-        if(!positionExists(p))
+
+    public Piece piece(Position position) {
+        if(!positionExists(position))
             throw new BoardExecption("Position not on the board");
-        return pieces[p.getRow()][p.getColumn()];
+        return pieces[position.getRow()][position.getColumn()];
     }
 
-    public void placePiece(Piece piece, Position pos) {
-        if(thereIsAPiece(pos))
-            throw new BoardExecption("There is already a piece on the position " + pos);
-        pieces[pos.getRow()][pos.getColumn()] = piece;
-        piece.position = pos;
+    public Piece removePiece(Position position) {
+        if(!positionExists(position))
+            throw new BoardExecption("Position not on the board");
+        if(piece(position) == null)
+            return null;
+
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return aux;
+    }
+
+    public void placePiece(Piece piece, Position position) {
+        if(thereIsAPiece(position))
+            throw new BoardExecption("There is already a piece on the position " + position);
+        pieces[position.getRow()][position.getColumn()] = piece;
+        piece.position = position;
     }
 
     public boolean positionExists(int row, int column) {
