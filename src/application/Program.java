@@ -15,7 +15,7 @@ public class Program {
         ChessMatch chessMatch = new ChessMatch();
         Scanner sc = new Scanner(System.in);
 
-        while(true) {
+        while (true) {
             try {
                 UI.clearScreen();
                 UI.printBoard(chessMatch.getPieces());
@@ -29,10 +29,11 @@ public class Program {
 
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
             } catch (ChessException e) {
-                System.out.println(e.getMessage());
+                System.out.println(UI.ANSI_RED + e.getMessage() + UI.ANSI_RESET);
+                System.out.println("Press any key to continue.");
                 sc.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println(e.getMessage());
+                System.out.println(UI.ANSI_RED + e.getMessage() + UI.ANSI_RESET);
                 sc.nextLine();
             }
         }
