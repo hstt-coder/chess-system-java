@@ -5,8 +5,7 @@ import boardgame.Piece;
 import boardgame.Position;
 import chess.enums.Color;
 import chess.exceptions.ChessException;
-import chess.pieces.King;
-import chess.pieces.Rook;
+import chess.pieces.*;
 
 public class ChessMatch {
     private Board board;
@@ -90,16 +89,21 @@ public class ChessMatch {
     private void initialSetup() {
         placeNewPiece('c', 1, new Rook(board, Color.WHITE));
         placeNewPiece('c', 2, new Rook(board, Color.WHITE));
-        placeNewPiece('d', 2, new Rook(board, Color.WHITE));
-        placeNewPiece('e', 2, new Rook(board, Color.WHITE));
-        placeNewPiece('e', 1, new Rook(board, Color.WHITE));
         placeNewPiece('d', 1, new King(board, Color.WHITE));
+        placeNewPiece('d', 3, new Queen(board, Color.WHITE));
+        placeNewPiece('d', 4, new Bishop(board, Color.WHITE));
+        placeNewPiece('e', 4, new Bishop(board, Color.WHITE));
+        placeNewPiece('c', 3, new Knight(board, Color.WHITE));
+        placeNewPiece('c', 4, new Knight(board, Color.WHITE));
+
 
         placeNewPiece('c', 7, new Rook(board, Color.BLACK));
         placeNewPiece('c', 8, new Rook(board, Color.BLACK));
-        placeNewPiece('d', 7, new Rook(board, Color.BLACK));
-        placeNewPiece('e', 7, new Rook(board, Color.BLACK));
-        placeNewPiece('e', 8, new Rook(board, Color.BLACK));
         placeNewPiece('d', 8, new King(board, Color.BLACK));
+        placeNewPiece('d', 5, new Queen(board, Color.BLACK));
+        placeNewPiece('b', 5, new Bishop(board, Color.BLACK));
+        placeNewPiece('c', 5, new Bishop(board, Color.BLACK));
+        placeNewPiece('e', 5, new Knight(board, Color.BLACK));
+        placeNewPiece('e', 6, new Knight(board, Color.BLACK));
     }
 }
