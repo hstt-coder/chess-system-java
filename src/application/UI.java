@@ -4,6 +4,7 @@ import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.enums.Color;
+import com.sun.security.jgss.GSSUtil;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -64,23 +65,33 @@ public class UI {
         printCapturedPieces(captured);
         System.out.println();
         System.out.println("Turn: " + chessMatch.getTurn());
-        System.out.print(ANSI_YELLOW);
-        System.out.print("Waiting player: ");
-        System.out.print(ANSI_YELLOW);
-        if (chessMatch.getCurrentPlayer() == Color.WHITE)
-            System.out.print(ANSI_WHITE);
-        else
-        System.out.print(ANSI_GREEN);
 
-        System.out.print(chessMatch.getCurrentPlayer());
-        System.out.print(ANSI_RESET);
+        if (!chessMatch.getCheckMate()) {
+            System.out.print(ANSI_YELLOW);
+            System.out.print("Waiting player: ");
+            System.out.print(ANSI_YELLOW);
+            if (chessMatch.getCurrentPlayer() == Color.WHITE)
+                System.out.print(ANSI_WHITE);
+            else
+                System.out.print(ANSI_GREEN);
 
-        if (chessMatch.getCheck()) {
+            System.out.print(chessMatch.getCurrentPlayer());
+            System.out.print(ANSI_RESET);
+
+            if (chessMatch.getCheck()) {
+                System.out.println();
+                System.out.print(ANSI_RED);
+                System.out.println("+++++++++ CHECK +++++++++");
+                System.out.print(ANSI_RESET);
+            }
+        } else {
             System.out.println();
             System.out.print(ANSI_RED);
-            System.out.println("*******CHECK********");
+            System.out.println("######### CHECKMATE #########");
             System.out.print(ANSI_RESET);
+            System.out.println("WINNER: " + chessMatch.getCurrentPlayer());
         }
+
 
     }
 
