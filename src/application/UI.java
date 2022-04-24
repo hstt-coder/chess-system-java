@@ -74,6 +74,14 @@ public class UI {
 
         System.out.print(chessMatch.getCurrentPlayer());
         System.out.print(ANSI_RESET);
+
+        if (chessMatch.getCheck()) {
+            System.out.println();
+            System.out.print(ANSI_RED);
+            System.out.println("*******CHECK********");
+            System.out.print(ANSI_RESET);
+        }
+
     }
 
     public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
