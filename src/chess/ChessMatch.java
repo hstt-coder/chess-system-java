@@ -88,7 +88,7 @@ public class ChessMatch {
             }
         }
 
-        check = (testCheck(opponent(currentPlayer)));
+        check = (testCheck(opponent(currentPlayer))) ? true : false;
 
         if (testCheckMate(opponent(currentPlayer)))
             checkmate = true;
@@ -267,7 +267,7 @@ public class ChessMatch {
         board.placePiece(p, source);
 
         if (capturedPiece != null) {
-            board.placePiece(capturedPiece, source);
+            board.placePiece(capturedPiece, target);
             capturedPieces.remove(capturedPiece);
             piecesOnTheBoard.add(capturedPiece);
         }
